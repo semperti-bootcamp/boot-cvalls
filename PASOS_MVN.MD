@@ -16,11 +16,12 @@
 	4. [Opcional] Por defecto, la aplicación almacena los PDFs en el directorio <User_home>/upload. Si querés cambiar este directorio, podés utilizar la propiedad -Dupload-dir=<path>.
 	5. [Opcional] Los PDFs predefinidos pueden encontrarse en la carpeta PDF. Si querés ver los PDFs, tenés que copiar los contenidos de esta carpeta a lo definido en el paso anterior.
 ### Instrucioner para correr el mvn
-  1 $ mvn compile
-  2 $ mvn test
+
+  1. $ mvn compile
+  2. $ mvn test
   para probar la Aplicacion ejecutando dede mvn
-  3 $ mvn spring-boot:run
+  3. $ mvn spring-boot:run
   para crear un paquete java 
-  4 $ mvn package
+  4. $ mvn package
  para correr probar el paquete
-  5 $ java -jar /home/Code/target/journals-1.0.jar
+  5. $ java -jar /home/Code/target/journals-1.0.jar
