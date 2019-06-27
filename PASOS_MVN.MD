@@ -25,3 +25,5 @@
   4.  mvn package
  para correr probar el paquete
   5.  java -jar /home/Code/target/journals-1.0.jar
+ #### Resultados del test y del build del java
+ https://github.com/semperti-bootcamp/boot-cvalls/blob/3--Probar-aplicaci%C3%B3n-Java/test.png
