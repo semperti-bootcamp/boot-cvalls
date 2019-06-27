@@ -18,6 +18,7 @@
       state: latest
     loop:
       - java-1.8.0-openjdk
+      - java-1.8.0-openjdk-devel.x86_64
   
      
 
@@ -37,24 +38,37 @@
     lineinfile:
       path: /etc/profile.d/maven.sh
       line: 'export PATH=${M2_HOME}/bin:${PATH}'
-    
-   
-
-
+  
+ 
   - name: Source profile maven
     shell: source /etc/profile.d/maven.sh
+    args:
+      warn: false
+  - name: create javaexp.sh
+    command: touch /etc/profile.d/javaexp.sh
+
+
+  - name: Add Profile path for java
+    lineinfile:
+      dest: "{{ item.dest }}"
+      regexp: "{{ item.regexp }}"
+      line: "{{ item.line }}"
+      backrefs: yes
+    with_items:
+      - {dest: '/etc/profile.d/javaexp.sh', regexp: 'Config path for java1', line: 'export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.212.b04-0.el7_6.x86_64/'}
+      - {dest: '/etc/profile.d/javaexp.sh', regexp: 'Config path for java2', line: 'export PATH=$PATH:/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.212.b04-0.el7_6.x86_64/bin'}
+
+
+  - name: Source profile java
+    shell: source /etc/profile.d/javaexp.sh
     args:
       warn: false
   
     
  
 
-  - name: Open Port 80 - http
-    command: firewall-cmd --add-port=80/tcp --permanent
-    args:
-      warn: false
-  - name: Open Port 443 - https
-    command: firewall-cmd --add-port=443/tcp --permanent
+  - name: Open Port 8080 - http api
+    command: firewall-cmd --add-port=8080/tcp --permanent
     args:
       warn: false
 
