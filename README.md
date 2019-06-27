@@ -3,7 +3,8 @@
 2- el equipo debe contar con python instalado.
 3- debe tener conectividad con el equipo a ejecutar el playbook  
 4- se debe generar una key 
-5- Generar una llave en el equipo Maestro para poder controlar los clientes .(comando$ ssh-keygen -t rsa -b 4096)
+5- Generar una llave en el equipo Maestro para poder controlar los clientes 
+$ ssh-keygen -t rsa -b 4096
 
 ## Guia de instalacion de ansible sobre Centos7
 https://www.linode.com/docs/applications/configuration-management/automatically-configure-servers-with-ansible-and-playbooks/
