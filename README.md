@@ -1,7 +1,7 @@
 # Java Application
 	
 ## Instrucciones para correr esta aplicación
-Ingresá la siguiente dirección http://10.252.7.170:8080/login
+Ingresá la siguiente dirección http://10.252.7.104:8080/login
 	
 ## Datos de autenticación
 
