@@ -13,5 +13,5 @@
     2- Pasar al environment  de ansible en el equipo.  $ source activate ansible-dev
     2.1-  cd ~/ansible
     2.2- definir el ip o hostname de equipo al cual se le van a instalar las aplicaciones en el archivo hosts
-    2.3- ejecutar  para instalar  Apache Maven 3.6.1 y  Java 1.8. $ ansible-playbook -u root install-centos7apps.yml 
+    2.3- ejecutar  para instalar  Apache Maven 3.6.1 y  Java 1.8. $ ansible-playbook -u root install-1centos7apps.yml
     2.4 ejecutar para instalar Mysql 5.6. $ ansible-playbook -u root install-2mysql.yml
