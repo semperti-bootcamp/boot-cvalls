@@ -15,8 +15,8 @@ $ ssh-copy-id root@equipoacontrolar -f
 
 
 2 Pasar al environment  de ansible en el equipo. 
-$ source activate ansible-dev
-cd ~/ansible
+   $ source activate ansible-dev
+   $cd ~/ansible
 2.1 definir el ip o hostname de equipo al cual se le van a instalar las aplicaciones en el archivo hosts
 
 
