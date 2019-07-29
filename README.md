@@ -3,6 +3,7 @@
 ## Requisitos : 
 
   1-  Descargar la carpeta docker al equipo que tenga instalado docker. 
+  
   https://github.com/semperti-bootcamp/boot-cvalls/tree/master/docker
   
   2-  Pararse sobre el directorio de docker  y ejecutar:
