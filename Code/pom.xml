@@ -6,7 +6,7 @@
     <connection>scm:git:git@github.com:semperti-bootcamp/boot-cvalls.git</connection>
     <url>git@github.com:semperti-bootcamp/boot-cvalls.git</url>
     <developerConnection>scm:git:git@github.com:semperti-bootcamp/boot-cvalls.git</developerConnection>
-      <tag>journals-2.0</tag>
+      <tag>journals-2.3</tag>
   </scm>
 
 
