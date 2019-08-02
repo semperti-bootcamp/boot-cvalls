@@ -1,0 +1,92 @@
+- hosts: bootcamp
+  become: true
+  tasks:
+  - name: Clean all Cache
+    command: yum clean all
+    args:
+      warn: false
+
+  - name: Create cache
+    command: yum makecache
+    args:
+      warn: false
+
+  - name: Install Dependencies
+    yum:
+      update_cache: yes
+      name: "{{ item }}"
+      state: latest
+    loop:
+      - git
+      - curl
+      - nss 
+      - nss-util
+      - nspr
+    
+  - name: clone a private repository
+    git: >
+      repo=git@github.com:semperti-bootcamp/boot-cvalls.git
+      dest=/home/api
+      force=yes
+
+  - name: Hago un deploy
+    command: mvn  deploy -f /home/api/Code/   
+    args:
+      warn: false  
+  
+  - name: git add 
+    command: git add .
+    args: 
+      warn: false 
+      chdir: /home/api/Code
+ 
+  - name: git add
+    command: git commit -am "test5"
+    args: 
+      warn: false       
+      chdir: /home/api/Code
+
+
+  - name: git push 
+    command: git push
+    args:
+     warn: false
+     chdir: /home/api/Code      
+    
+
+
+     
+ # - name: Hago un build
+ #   command: mvn build -f /home/api/Code/
+ #   args: 
+ #     warn: false
+
+ # - name: git add 
+ #   command: git add .
+ #   args: 
+ #     warn: false
+ #     chdir: /home/api/Code
+  
+ 
+ # - name: git add
+ #   command: git commit -am "Previo Al Release"
+ #   args: 
+ #     warn: false
+ #     chdir: /home/api/Code
+
+
+ # - name: git push
+ #   command: git push
+ #   args:
+ #    warn: false
+ #    chdir: /home/api/Code
+
+
+      
+
+  - name: Hago un release 
+    command: mvn -B release:clean release:prepare release:perform -f /home/api/Code/
+    args:
+      warn: false  
+
+
