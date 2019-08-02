@@ -1,0 +1,13 @@
+- hosts: bootcamp
+  become: true
+  tasks:
+    - name: build the image
+      command: docker build -f Dockerfile -t  test_java:8 .
+      args: 
+       warn: false 
+       chdir: /home/docker
+
+    - name: Correr la imagen de docker
+      command: docker run -d -it --net=host -t -p 8080:8080 test_java:8
+      args:
+       warn: false

@@ -1,0 +1,33 @@
+- hosts: bootcamp
+  become: true
+  tasks:
+
+
+   - name: Install Dependencies
+     yum:
+       update_cache: yes
+       name: "{{ item }}"
+       state: latest
+     loop:
+       - epel-release 
+       - python-pip
+
+
+   - name: upgrade pip
+     command:  pip install  --upgrade pip
+     args: 
+      warn: false 
+
+   - name: pip install  docker
+     command:  pip install docker
+     args: 
+      warn: false   
+    
+   - name: pip install docker-py
+     command:  pip install docker-py
+     args: 
+      warn: false 
+   
+  
+    
+
