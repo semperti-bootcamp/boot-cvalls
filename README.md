@@ -1,7 +1,8 @@
 ## Pasos para subir a nexus el Snapshot y el  Release
 
-1- Pasar al environment de ansible en el equipo. $ source activate ansible-dev < /br>
-Ejecutar $ ansible-playbook -u root 4_cargar_app_en_nex.yml
+1- Pasar al environment de ansible en el equipo. <br/>
+$ source activate ansible-dev <br/>
+Ejecutar $ ansible-playbook -u root 4_cargar_app_en_nex.yml <br/>
 
 ## Screens de tarea  de ansible:
 
