@@ -11,8 +11,10 @@
         2.2- $sudo docker run -d -it --net=host -t -p 8080:8080 test_java:8
 
 ## LINK DE TESTEO:
+
 http://10.252.7.127:8080/ 
        
        
-##Screns de los logs de ansible
-https://imgur.com/a/8ruUR6i
+##Screens de los logs de ansible:
+
+  https://imgur.com/a/8ruUR6i
