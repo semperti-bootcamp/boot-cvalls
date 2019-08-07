@@ -1,0 +1,12 @@
+image: docker:latest
+services:
+  - docker:dind
+
+stages:
+  - release
+
+release:
+  stage: release
+  script:
+    - apk update && apk add git
+    - ./build.sh
