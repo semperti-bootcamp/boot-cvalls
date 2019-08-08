@@ -1,7 +1,5 @@
 pipeline {
-    options {
-        ansiColor('xterm')
-    }   
+    
 
     agent {
         node (){
@@ -12,49 +10,37 @@ pipeline {
         ANSIBLE_HOST_KEY_CHECKING = 'false'
     }
 
-    stages {
-        stage('Prepare Jenkins Slave') {
-            steps {
-                sh "yum install wget git unzip epel-release ansible java-1.8.0-openjdk maven awscli -y"
-                sh "curl https://releases.hashicorp.com/terraform/0.11.13/terraform_0.11.13_linux_amd64.zip -o /usr/local/bin/terraform.zip"
-                sh "unzip -u /usr/local/bin/terraform.zip -d /usr/local/bin/"
-            }
-        }
+    stages {   
         stage('Unit Test & Package') {
             steps {
-                withCredentials([file(credentialsId: 'MAVEN_SETTINGS', variable: 'MAVEN_SETTINGS')]) {
-                    sh "mvn test -f pom.xml -s $MAVEN_SETTINGS"
-                    sh "mvn package -f pom.xml -s $MAVEN_SETTINGS"
-                }
+                    sh "mvn test -f /home/api/Code/"   
+                    sh "mvn package -f /home/api/Code/"   
+                
             }
         }
-        stage('Clean & Generate Snapshot') {
+        
+          stage('Clean & Generate Snapshot') {
             steps {
-                withCredentials([file(credentialsId: 'MAVEN_SETTINGS', variable: 'MAVEN_SETTINGS')]) {
-                    sh "mvn -B clean deploy -f pom.xml  -s $MAVEN_SETTINGS"
-                }
+                    sh "mvn versions:set -DnewVersion=2.0.3-SNAPSHOT -f /home/api/Code/pom.xml"
+                    sh "mvn -B clean deploy -DnewVersion=2.0.3-SNAPSHOT -f /home/api/Code/"   
+                
             }
         }
         stage('Release & Deploy Image to Nexus'){
-            steps{
-                withCredentials([file(credentialsId: 'MAVEN_SETTINGS', variable: 'MAVEN_SETTINGS')]) {
-                    sh "mvn -B release:prepare release:perform -DscmCommentPrefix=\"[skip-ci]\" -f pom.xml  -s $MAVEN_SETTINGS"
-                }
+            steps{  
+                  
+                   sh "mvn -B release:clean release:prepare release:perform    -f /home/api/Code/ -DcheckModificationExcludeList=** "   
+                 
+              
             }
         }
-        stage('Configure Docker Image on Docker Host') {
+        stage('Docker build & tag images') {
             steps {
-                withCredentials([file(credentialsId: 'ANSIBLE_JSON_ALL', variable: 'ANSIBLE_JSON')]) {
-                    sh "ansible-playbook --extra-vars @$ANSIBLE_JSON ansible/punto5.yml -i ansible/java-docker.txt"            
-                }
-            }
-        }
-        stage('Publish Image to DTR') {
-            steps {
-                withCredentials([file(credentialsId: 'ANSIBLE_JSON_ALL', variable: 'ANSIBLE_JSON')]) {
-                    sh "ansible-playbook --extra-vars @$ANSIBLE_JSON ansible/push-docker-image.yml -i ansible/java-docker.txt"            
-                }
+                
+                sh "sudo docker build -f Dockerfile -t  api_java:2.0 ."
+                sh "sudo docker tag api_java:2.0 christianvalls86/api_java:2.0"
             }
         }
     }
+
 }
