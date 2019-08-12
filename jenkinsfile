@@ -31,6 +31,13 @@ pipeline {
         }
       }
       
+       stage('Test curl') {
+        steps{
+          script {
+            sh " curl -v 127.0.0.1:8080" 
+          }
+        }
+      }
       
     }
       
