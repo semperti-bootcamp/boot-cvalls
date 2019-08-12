@@ -1,4 +1,4 @@
-###7- Crear Pipeline de CI
+###  7- Crear Pipeline de CI
 
 7.0	Debe encontrarse dentro de un folder con el nombre bc-username  
 7.1	Debe ejecutarse el build cada vez que se realice un PR  
