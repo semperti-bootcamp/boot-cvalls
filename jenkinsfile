@@ -26,7 +26,8 @@ pipeline {
     stage('pull Image') {
       steps{
         script {
-            dockerImage.pull(christianvalls1986/test_java:$AppVersion)
+           sh "docker pull christianvalls1986/test_java:$AppVersion"
+          
           
         }
       }
