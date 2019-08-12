@@ -14,23 +14,14 @@ pipeline {
     }
 
     stages {   
-       
-  
-    stage('Building image') {
-      steps{
-        script {
-          dockerImage = docker.build registry + ":$env.AppVersion"
+     
+      stage('pull Image') {
+        steps{
+          script {
+            sh "docker pull christianvalls1986/test_java:$AppVersion" 
+          }
         }
       }
     }
-    stage('pull Image') {
-      steps{
-        script {
-           sh "docker pull christianvalls1986/test_java:$AppVersion"
-          
-          
-        }
-      }
-    }
-  
+      
 }
