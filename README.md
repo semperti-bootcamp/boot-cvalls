@@ -2,7 +2,7 @@
 
 Por problemas para subir la imagen al repositorio continuamos con dockerhub.
 
-Pasos para subir la imagen a dockerhub :   
+## Pasos para subir la imagen a dockerhub :    
 
 $docker login docker.io    
 $docker tag test_java:8 christianvalls1986/test_java:8    
