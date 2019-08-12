@@ -1,5 +1,7 @@
 ## Subir Docker Image a Nexus  
 
+Por problemas para subir la imagen al repositorio continuamos con dockerhub.
+
 Pasos para subir la imagen a dockerhub :   
 
 $docker login docker.io    
