@@ -1,0 +1,35 @@
+pipeline {
+
+
+    agent {
+        node (){
+            label 'bc-cvalls'
+        } 
+    }
+    environment {
+        ANSIBLE_HOST_KEY_CHECKING = 'false'
+          registry = "christianvalls1986/test_java"
+           registryCredential = 'dockercvalls'
+		   AppVersion = "2.0.11"
+    }
+
+    stages {   
+       
+  
+    stage('Building image') {
+      steps{
+        script {
+          dockerImage = docker.build registry + ":$env.AppVersion"
+        }
+      }
+    }
+    stage('pull Image') {
+      steps{
+        script {
+            dockerImage.pull(christianvalls1986/test_java:$AppVersion)
+          
+        }
+      }
+
+  
+}
