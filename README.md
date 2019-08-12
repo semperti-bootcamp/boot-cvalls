@@ -8,7 +8,7 @@ Creamos una nueva carpeta para el proyecto (bcvalls)
 Creamos un nodo slave nuevo desde: config -nuevo nodo (bc-cvalls)  
 
 
-configuración del proyecto :  
+## configuración del proyecto :  
 https://imgur.com/8Qg455g  
 para el proyecto generamos guardamos la credencial de dockerhub  en la carpeta del proyecto  
 
