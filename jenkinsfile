@@ -24,8 +24,8 @@ pipeline {
         
           stage('Clean & Generate Snapshot') {
             steps {
-                    sh "mvn versions:set -DnewVersion=$env.AppVersion"-SNAPSHOT" -f /home/api/Code/pom.xml"
-                    sh "mvn -B clean deploy -DnewVersion=$env.AppVersion"-SNAPSHOT" -f /home/api/Code/ -DskipTests"   
+                    sh "mvn versions:set -DnewVersion=$env.AppVersion-SNAPSHOT -f /home/api/Code/pom.xml"
+                    sh "mvn -B clean deploy -DnewVersion=$env.AppVersion-SNAPSHOT -f /home/api/Code/ -DskipTests"   
                 
             }
         }
