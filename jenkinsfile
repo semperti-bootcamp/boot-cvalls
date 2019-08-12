@@ -23,8 +23,8 @@ pipeline {
         
           stage('Clean & Generate Snapshot') {
             steps {
-                    sh "mvn versions:set -DnewVersion=2.0.8-SNAPSHOT -f /home/api/Code/pom.xml"
-                    sh "mvn -B clean deploy -DnewVersion=2.0.8-SNAPSHOT -f /home/api/Code/ -DskipTests"   
+                    sh "mvn versions:set -DnewVersion=2.0.9-SNAPSHOT -f /home/api/Code/pom.xml"
+                    sh "mvn -B clean deploy -DnewVersion=2.0.9-SNAPSHOT -f /home/api/Code/ -DskipTests"   
                 
             }
         }
