@@ -10,6 +10,7 @@ pipeline {
         ANSIBLE_HOST_KEY_CHECKING = 'false'
           registry = "christianvalls1986/test_java"
            registryCredential = 'dockercvalls'
+		   AppVersion = "2.0.11"
     }
 
     stages {   
@@ -23,8 +24,8 @@ pipeline {
         
           stage('Clean & Generate Snapshot') {
             steps {
-                    sh "mvn versions:set -DnewVersion=2.0.10-SNAPSHOT -f /home/api/Code/pom.xml"
-                    sh "mvn -B clean deploy -DnewVersion=2.0.10-SNAPSHOT -f /home/api/Code/ -DskipTests"   
+                    sh "mvn versions:set -DnewVersion=$env.AppVersion"-SNAPSHOT" -f /home/api/Code/pom.xml"
+                    sh "mvn -B clean deploy -DnewVersion=$env.AppVersion"-SNAPSHOT" -f /home/api/Code/ -DskipTests"   
                 
             }
         }
@@ -40,7 +41,7 @@ pipeline {
     stage('Building image') {
       steps{
         script {
-          dockerImage = docker.build registry + ":$BUILD_NUMBER"
+          dockerImage = docker.build registry + ":$env.AppVersion"
         }
       }
     }
@@ -55,7 +56,7 @@ pipeline {
     }
     stage('Remove Unused docker image') {
       steps{
-        sh "docker rmi $registry:$BUILD_NUMBER"
+        sh "docker rmi $registry:$$env.AppVersion"
       }
     }
         
