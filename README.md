@@ -4,7 +4,7 @@
 8.2	Debe contener al menos las etapas de descarga de imagen, ejecución de contenedor y prueba de acceso a la aplicación mediante un curl y su output  
 
 ## Screen del Pipeline en Jenkins : 
-https://imgur.com/I8nq2lB  
+https://imgur.com/a/E9eWfJx
 
 ## Resultado del curl:  
 https://imgur.com/onxJXeW
