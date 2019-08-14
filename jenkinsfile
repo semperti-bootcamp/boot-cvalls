@@ -28,13 +28,21 @@ pipeline {
           script {
             sh "docker run  -d -it --net=host -t -p 8080:8080 christianvalls1986/test_java:$AppVersion" 
           }
+	  timeout(300) {
+		    waitUntil {
+		       script {3
+			 def r = sh script: 'curl http://10.252.7.151:8080', returnStatus: true
+			 return (r == 0);
+			 }
+			 }
+			}
         }
       }
       
        stage('Test curl') {
         steps{
           script {
-            sh " curl -v 127.0.0.1:8080" 
+            sh " curl -v 10.252.7.151:8080" 
           }
         }
       }
