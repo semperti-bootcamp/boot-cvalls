@@ -31,7 +31,7 @@ pipeline {
 	  timeout(300) {
 		    waitUntil {
 		       script {3
-			 def r = sh script: 'curl http://10.252.7.151:8080', returnStatus: true
+			 def r = sh script: 'curl http://10.252.7.131:8080', returnStatus: true
 			 return (r == 0);
 			 }
 			 }
@@ -42,7 +42,7 @@ pipeline {
        stage('Test curl') {
         steps{
           script {
-            sh " curl -v 10.252.7.151:8080" 
+            sh " curl -v 10.252.7.131:8080" 
           }
         }
       }
